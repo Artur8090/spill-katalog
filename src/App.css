@@ -1,0 +1,241 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/*My css*/
+@font-face {
+  font-family: "pixel";
+  src: url(../fonts/Sixtyfour_Convergence/SixtyfourConvergence-Regular-VariableFont_BLED\,SCAN\,XELA\,YELA.ttf);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-header-area {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background: #020403;
+  border-bottom: 4px solid #990000;
+}
+
+.search-button img, .recent img {
+  width: 40px;
+}
+.logo:hover{
+  cursor: pointer;
+}
+.logo img {
+  width: 50px;
+  border: 3px solid gray;
+  border-radius: 25px;
+}
+
+.buttons-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border: 4px solid #0D0907;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #242124;
+}
+
+.search-area {
+  display: flex;
+  gap: 10px;
+}
+
+.search-text-area {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 40px;
+  font-family: "pixel";
+}
+
+.main-area {
+  width: 100%;
+  min-height: 85vh;
+  background-color: #181818;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 50px 0;
+}
+
+.main-inner-container {
+  width: 70%;
+  max-width: 1000px;
+  background-color: #2a2a2a;
+  border-radius: 12px;
+  padding: 30px;
+  color: white;
+  font-family: "pixel", sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.catalogue-title {
+  font-size: 36px;
+  margin-top: 0;
+  border-bottom: 2px solid #990000;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+
+.buttons-area {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  border: 4px solid #0D0907;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: #242124;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "pixel", sans-serif;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+}
+
+.log-in button {
+  background-color: #333;
+  border: 2px solid #444;
+}
+
+.log-in button:hover {
+  background-color: #444;
+  border-color: #555;
+}
+
+.register button {
+  background-color: #990000;
+  border: 2px solid #cc0000;
+}
+
+.register button:hover {
+  background-color: #cc0000;
+  border-color: #ff0000;
+}
+
+.recent-button img {
+  width: 40px;
+}
+
+.recent-button, .search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.recent-button img, .search-button img {
+  width: 24px;
+}
+
+.recent-button:hover, .search-button:hover {
+  background-color: #990000;
+  transform: scale(1.1);
+}
+
+.search-text-area.hidden {
+  display: none;
+}
+
+.search-text-area {
+  transition: all 0.3s ease;
+}
+
+.search-text-area input {
+  width: 250px;
+  padding: 8px 15px;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  outline: none;
+}
+
+.search-text-area input:focus {
+  border-color: #990000;
+  box-shadow: 0 0 8px rgba(153, 0, 0, 0.5);
+}
+
+.search-submit {
+  width: 150px;
+  height: 40px;
+  background-color: #333;
+  border: 2px solid #444;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+
+.search-submit:hover {
+  background-color: #cc0000;
+  transform: scale(1.1);
+}
+
