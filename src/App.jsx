@@ -1,33 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import GameCardComponent from "./GameCardComponent";
 import GameFilterControls from "./GameFilterControls";
 
-const gameData = [
-  { name: "Far Cry 3", rating: 4, img: "image1.png" },
-  { name: "Geometry Dash", rating: 5, img: "image2.png" },
-  { name: "Detroit Become Human", rating: 4, img: "image3.png" },
-  { name: "Forager", rating: 3, img: "image4.png" },
-  { name: "Just Cause 3", rating: 3, img: "image5.png" },
-  { name: "The Witness", rating: 5, img: "image6.png" },
-  { name: "Raft", rating: 5, img: "image7.png" },
-  { name: "Cuphead", rating: 3, img: "image8.png" },
-  { name: "Firewatch", rating: 4, img: "image9.png" },
-  { name: "Rust", rating: 1, img: "image10.png" }
-];
-
 function App() {
-  const [games, setGames] = useState(gameData);
+  const [games, setGames] = useState([]);
+  const [originalGames, setOriginalGames] = useState([]);
+
+  useEffect(() => {
+    fetch("/data/gameData.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setGames(data);
+        setOriginalGames(data);
+      })
+      .catch((err) => console.error("Failed to load game data:", err));
+  }, []);
 
   const handleSearch = (query) => {
-    const filtered = gameData.filter(game =>
+    const filtered = originalGames.filter((game) =>
       game.name.toLowerCase().includes(query.toLowerCase())
     );
     setGames(filtered);
   };
 
   const resetGames = () => {
-    setGames(gameData);
+    setGames(originalGames);
   };
 
   return (
