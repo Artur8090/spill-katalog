@@ -1,5 +1,6 @@
 import React from "react";
 import "./GameCardComponent.css";
+import "../../types";
 
 const unfilledStar = "☆";
 const filledStar = "★";
@@ -18,11 +19,7 @@ function toStarRating(rating: number): string {
 }
 
 interface GameCardProps {
-  gameCard: {
-    name: string;
-    rating: number;
-    img: string;
-  };
+  gameCard: GameCard;
 }
 
 class GameCardComponent extends React.Component<GameCardProps> {
