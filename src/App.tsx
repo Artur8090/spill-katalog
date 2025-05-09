@@ -6,22 +6,13 @@ import GameFilterControls from "./components/GameFilterComponent/GameFilterContr
 import { GamesContext } from "./GamesContext";
 import Header from "./Header";
 import { fetchGames } from './api/GamesApi';
+import LoginComponent from "./components/LoginComponent/LoginComponent";
+import { useUser } from "./UserContext";
 
 function App() {
   const [gamesList, setGamesList] = useState<GameCardType[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Login-related state
-  const [loggedInUser, setLoggedInUser] = useState<string | null>(null);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [usernameInput, setUsernameInput] = useState("");
-  const [passwordInput, setPasswordInput] = useState("");
-
-  // Test credentials
-  const testUser = {
-    username: "testuser",
-    password: "password123"
-  };
+  const { loggedInUser, logout } = useUser();
 
   useEffect(() => {
     loadGames();
@@ -44,61 +35,22 @@ function App() {
     console.log("on reset");
   };
 
-  const handleLoginSubmit = () => {
-    if (
-      usernameInput === testUser.username &&
-      passwordInput === testUser.password
-    ) {
-      setLoggedInUser(usernameInput);
-      setUsernameInput("");
-      setPasswordInput("");
-      setIsLoggingIn(false);
-    } else {
-      alert("Invalid username or password");
-    }
-  };
-
-  const handleLogout = () => {
-    setLoggedInUser(null);
-  };
-
   return (
     <>
       <Header title="GameVault" onLogoClick={resetGames}>
         {loggedInUser ? (
           <div className="user-display">
             <span>Welcome, {loggedInUser}</span>
-            <button onClick={handleLogout}>Log out</button>
+            <button onClick={logout}>Log out</button>
           </div>
         ) : (
           <>
-            {isLoggingIn ? (
-              <div className="login-form">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  value={usernameInput}
-                  onChange={(e) => setUsernameInput(e.target.value)}
-                />
-                <input
-                  type="password"
-                  placeholder="Password"
-                  value={passwordInput}
-                  onChange={(e) => setPasswordInput(e.target.value)}
-                />
-                <button onClick={handleLoginSubmit}>Submit</button>
-                <button onClick={() => setIsLoggingIn(false)}>Cancel</button>
-              </div>
-            ) : (
-              <>
-                <div className="log-in">
-                  <button onClick={() => setIsLoggingIn(true)}>Log in</button>
-                </div>
-                <div className="register">
-                  <button>Register</button>
-                </div>
-              </>
-            )}
+            <div className="log-in">
+              <LoginComponent />
+            </div>
+            <div className="register">
+              <button>Register</button>
+            </div>
           </>
         )}
         <GameFilterControls onSearch={handleSearch} onReset={resetGames} />

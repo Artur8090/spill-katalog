@@ -1,47 +1,51 @@
-import { useState } from "react";
-import "./LoginComponent.css";
 
-type Props = {
-  onLogin: (username: string) => void;
-};
+import { useState } from 'react';
+import { useUser } from '../../UserContext';
+import './LoginComponent.css';
 
-const LoginComponent = ({ onLogin }: Props) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+const LoginComponent = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [showForm, setShowForm] = useState(false);
+  const { login } = useUser(); 
 
-  const testUser = { username: "test", password: "1234" };
-
-  const handleSubmit = () => {
-    if (username === testUser.username && password === testUser.password) {
-      onLogin(username);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const success = login(username, password); 
+    if (success) {
       setShowForm(false);
-      setUsername("");
-      setPassword("");
+      setUsername('');
+      setPassword('');
     } else {
-      alert("Invalid credentials");
+      alert('Invalid credentials');
     }
   };
 
   return (
     <div className="login-component">
       {showForm ? (
-        <div className="login-form">
+        <form className="login-form" onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
+            required
           />
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
-          <button onClick={handleSubmit}>Submit</button>
-          <button onClick={() => setShowForm(false)}>Cancel</button>
-        </div>
+          <div className="login-buttons">
+            <button type="submit">Login</button>
+            <button type="button" onClick={() => setShowForm(false)}>
+              Cancel
+            </button>
+          </div>
+        </form>
       ) : (
         <button onClick={() => setShowForm(true)}>Log in</button>
       )}

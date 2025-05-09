@@ -1,14 +1,21 @@
 .login-form {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  
-  .login-form input {
-    padding: 4px;
-  }
-  
-  .login-form button {
-    padding: 4px 8px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.login-form input {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.login-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.login-buttons button {
+  padding: 4px 8px;
+}
